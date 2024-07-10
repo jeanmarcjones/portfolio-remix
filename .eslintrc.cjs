@@ -19,13 +19,10 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  ignorePatterns: ['!**/.server', '!**/.client'],
+  ignorePatterns: ['!**/.server', '!**/.client', 'tailwind.config.js'],
 
   // Base config
-  extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended', // Make sure this is always the last element in the array.
-  ],
+  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
 
   overrides: [
     // React
@@ -60,6 +57,7 @@ module.exports = {
           'error',
           { number: { minimumDigits: 0, groupLength: 3 } },
         ],
+        'unicorn/prevent-abbreviations': 'off',
       },
     },
 
