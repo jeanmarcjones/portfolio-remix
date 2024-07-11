@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-function Index() {
+export default function Index() {
   return (
     <div className="p-4 font-sans">
       <h1 className="text-3xl">Welcome to Remix</h1>
@@ -46,5 +46,3 @@ function Index() {
     </div>
   )
 }
-
-export default Index

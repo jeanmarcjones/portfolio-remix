@@ -53,9 +53,65 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-function Navigation() {
+const ListItem = React.forwardRef<
+  React.ElementRef<'a'>,
+  LinkProps & React.RefAttributes<HTMLAnchorElement>
+>(({ className, title, children, ...props }, ref) => {
   return (
-    <header className="flex justify-center">
+    <li>
+      <NavigationMenuLink asChild>
+        <Link
+          ref={ref}
+          className={cn(
+            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = 'ListItem'
+
+type IconProps = React.HTMLAttributes<SVGElement>
+
+const LogoIcon = (props: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
+    <rect width="256" height="256" fill="none" />
+    <line
+      x1="208"
+      y1="128"
+      x2="128"
+      y2="208"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="16"
+    />
+    <line
+      x1="192"
+      y1="40"
+      x2="40"
+      y2="192"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="16"
+    />
+  </svg>
+)
+
+export default function Navigation() {
+  return (
+    <header className="flex justify-center border-b">
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -125,61 +181,3 @@ function Navigation() {
     </header>
   )
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  LinkProps & React.RefAttributes<HTMLAnchorElement>
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          ref={ref}
-          className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = 'ListItem'
-
-type IconProps = React.HTMLAttributes<SVGElement>
-
-const LogoIcon = (props: IconProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" {...props}>
-    <rect width="256" height="256" fill="none" />
-    <line
-      x1="208"
-      y1="128"
-      x2="128"
-      y2="208"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="16"
-    />
-    <line
-      x1="192"
-      y1="40"
-      x2="40"
-      y2="192"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="16"
-    />
-  </svg>
-)
-
-export default Navigation

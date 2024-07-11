@@ -1,6 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import type { ComponentPropsWithoutRef, ElementType } from 'react'
 
-type ComponentPropsExcludingRef<T extends ElementType> =
+export type ComponentPropsExcludingRef<T extends ElementType> =
   ComponentPropsWithoutRef<T>
-
-export type { ComponentPropsExcludingRef }

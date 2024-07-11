@@ -22,19 +22,34 @@ module.exports = {
   ignorePatterns: ['!**/.server', '!**/.client', 'tailwind.config.js'],
 
   // Base config
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'plugin:unicorn/recommended',
+  ],
+  plugins: ['simple-import-sort'],
+  rules: {
+    /**
+     * @description unicorn rules
+     */
+    'unicorn/numeric-separators-style': [
+      'error',
+      { number: { minimumDigits: 0, groupLength: 3 } },
+    ],
+    'unicorn/prevent-abbreviations': 'off',
+    'unicorn/no-null': 'off',
+  },
 
   overrides: [
     // React
     {
       files: ['**/*.{js,jsx,ts,tsx}'],
-      plugins: ['react', 'jsx-a11y', 'simple-import-sort'],
+      plugins: ['react', 'jsx-a11y'],
       extends: [
         'plugin:react/recommended',
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
         'plugin:jsx-a11y/recommended',
-        'plugin:unicorn/recommended',
       ],
       settings: {
         react: {
@@ -48,16 +63,6 @@ module.exports = {
         'import/resolver': {
           typescript: {},
         },
-      },
-      rules: {
-        /**
-         * @description unicorn rules
-         */
-        'unicorn/numeric-separators-style': [
-          'error',
-          { number: { minimumDigits: 0, groupLength: 3 } },
-        ],
-        'unicorn/prevent-abbreviations': 'off',
       },
     },
 

@@ -9,7 +9,6 @@ import {
 import * as React from 'react'
 
 import Navigation from '~/components/navigation'
-import { Separator } from '~/components/ui/separator'
 
 import styles from './styles/tailwind.css?url'
 
@@ -26,7 +25,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navigation />
-        <Separator />
 
         {children}
 
