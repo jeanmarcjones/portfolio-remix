@@ -17,10 +17,10 @@ export default function ReadPost() {
   const { post } = useLoaderData<typeof loader>()
 
   return (
-    <div className="p-4">
+    <article className="prose px-7 py-4">
       <h1 className="bold mb-6 text-3xl capitalize">{post.title}</h1>
 
       <p className="whitespace-pre-wrap">{post.content}</p>
-    </div>
+    </article>
   )
 }

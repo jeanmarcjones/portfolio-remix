@@ -24,8 +24,8 @@ export default function Blog() {
   const { posts } = useLoaderData<typeof loader>()
 
   return (
-    <div className="p-4 font-sans">
-      <h1 className="bold mb-6 text-3xl">Blog</h1>
+    <div className="px-7 py-4 font-sans">
+      <h1 className="prose-h1 bold mb-6 text-3xl">Blog</h1>
 
       <div className="flex flex-col gap-4">
         {posts.length > 0 ? (
