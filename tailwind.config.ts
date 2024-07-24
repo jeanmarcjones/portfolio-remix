@@ -1,10 +1,11 @@
+import typography from '@tailwindcss/typography'
 import type { Config } from 'tailwindcss'
 import animatePlugin from 'tailwindcss-animate'
 import radixPlugin from 'tailwindcss-radix'
 
 const config = {
   darkMode: ['class'],
-  content: ['./app/**/*.{ts,tsx}'],
+  content: ['./app/**/*.{ts,tsx,mdx}'],
   prefix: '',
   theme: {
     container: {
@@ -71,7 +72,7 @@ const config = {
       },
     },
   },
-  plugins: [animatePlugin, radixPlugin],
+  plugins: [animatePlugin, radixPlugin, typography],
 } satisfies Config
 
 export default config
