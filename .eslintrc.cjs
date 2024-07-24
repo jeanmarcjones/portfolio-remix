@@ -19,14 +19,10 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  ignorePatterns: ['!**/.server', '!**/.client', 'tailwind.config.js'],
+  ignorePatterns: ['!**/.server', '!**/.client'],
 
   // Base config
-  extends: [
-    'eslint:recommended',
-    'plugin:prettier/recommended',
-    'plugin:unicorn/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:unicorn/recommended'],
   plugins: ['simple-import-sort'],
   rules: {
     /**
