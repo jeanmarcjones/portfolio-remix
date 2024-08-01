@@ -2,8 +2,8 @@ import type { MetaFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 
-import { prisma } from '~/utils/helpers/db.server'
-import { truncate } from '~/utils/helpers/text'
+import { prisma } from '~/utils/db.server'
+import { truncate } from '~/utils/text'
 
 export const meta: MetaFunction = () => {
   return [

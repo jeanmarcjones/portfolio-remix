@@ -11,6 +11,6 @@
   },
   "aliases": {
     "components": "~/components",
-    "utils": "~/utils/helpers/misc.ts"
+    "utils": "~/utils/misc.ts"
   }
 }

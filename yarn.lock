@@ -419,6 +419,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@epic-web/client-hints@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "@epic-web/client-hints@npm:1.3.2"
+  checksum: 10c0/14d73cde855915f4f145a4673b25935ddd4f8c7972717481c14e38c87608752fd3a5922f468ecf4a59146cfcdb3dd58ea889822006e57f84ba04076b6163c826
+  languageName: node
+  linkType: hard
+
 "@epic-web/invariant@npm:^1.0.0":
   version: 1.0.0
   resolution: "@epic-web/invariant@npm:1.0.0"
@@ -8040,6 +8047,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "portfolio@workspace:."
   dependencies:
+    "@epic-web/client-hints": "npm:^1.3.2"
     "@epic-web/invariant": "npm:^1.0.0"
     "@faker-js/faker": "npm:^8.4.1"
     "@mdx-js/rollup": "npm:^3.0.1"

@@ -4,7 +4,7 @@ import animatePlugin from 'tailwindcss-animate'
 import radixPlugin from 'tailwindcss-radix'
 
 const config = {
-  darkMode: ['class'],
+  darkMode: 'selector',
   content: ['./app/**/*.{ts,tsx,mdx}'],
   prefix: '',
   theme: {

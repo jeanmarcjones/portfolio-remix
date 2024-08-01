@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-import { prisma } from '~/utils/helpers/db.server'
+import { prisma } from '~/utils/db.server'
 
 import { createUser } from '../test/db-utils'
 
