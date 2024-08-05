@@ -1,8 +1,8 @@
 import {
   json,
-  LinksFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
+  type LinksFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
 } from '@remix-run/node'
 import {
   Links,
@@ -10,12 +10,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from '@remix-run/react'
 import * as React from 'react'
 
 import Navigation from '~/components/navigation'
+import ThemeSwitch, { useTheme } from '~/routes/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
-import { Theme, useTheme } from '~/utils/theme'
+import { getTheme, type Theme } from '~/utils/theme.server'
 
 import styles from './tailwind.css?url'
 
@@ -33,6 +35,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return json({
     requestInfo: {
       hints: getHints(request),
+      userPerfs: {
+        theme: getTheme(request),
+      },
     },
   })
 }
@@ -64,16 +69,19 @@ function Document({
 }
 
 export default function App() {
+  const data = useLoaderData<typeof loader>()
   const theme = useTheme()
 
   return (
     <Document theme={theme}>
-      <div className="h-full overflow-x-hidden">
-        <header className="flex justify-center border-b">
+      <div className="h-screen overflow-x-hidden">
+        <header className="flex justify-between border-b px-16 py-1">
           <Navigation />
+
+          <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
         </header>
 
-        <main className="mx-auto flex w-full max-w-7xl flex-1">
+        <main className="max-w-7xl flex-1">
           <Outlet />
         </main>
       </div>

@@ -1,6 +1,5 @@
 import { invariantResponse } from '@epic-web/invariant'
-import type { LoaderFunctionArgs } from '@remix-run/node'
-import { json } from '@remix-run/node'
+import { json, type LoaderFunctionArgs } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 import { prisma } from '~/utils/db.server'
@@ -17,7 +16,7 @@ export default function ReadPost() {
   const { post } = useLoaderData<typeof loader>()
 
   return (
-    <article className="prose px-7 py-4 dark:prose-invert">
+    <article className="container prose py-6 dark:prose-invert">
       <h1 className="bold mb-6 text-3xl capitalize">{post.title}</h1>
 
       <p className="whitespace-pre-wrap">{post.content}</p>

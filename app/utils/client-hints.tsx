@@ -14,13 +14,21 @@ const hintsUtils = getHintUtils({
 
 export const { getHints } = hintsUtils
 
+/**
+ * @returns an object with the client hints and their values
+ */
 export function useHints() {
   const requestInfo = useRequestInfo()
   return requestInfo.hints
 }
 
-// TODO implement CPS and add nonce to script
+// TODO implement CSP and add nonce to script
 
+/**
+ * @returns inline script element that checks for client hints and sets cookies
+ * if they are not set then reloads the page if any cookie was set to an
+ * inaccurate value.
+ */
 export function ClientHintCheck() {
   const { revalidate } = useRevalidator()
   React.useEffect(
