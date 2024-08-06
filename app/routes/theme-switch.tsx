@@ -63,9 +63,10 @@ export default function ThemeSwitch({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="icon"
-          className="h-12 w-12 rounded-full border drop-shadow"
+          className="h-12 w-12 rounded-full drop-shadow"
+          color="red"
         >
           {modeIcon[mode]}
           <span className="sr-only">open theme selection menu</span>
