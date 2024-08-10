@@ -2629,12 +2629,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.14.10":
+"@types/node@npm:*":
   version: 20.14.10
   resolution: "@types/node@npm:20.14.10"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/0b06cff14365c2d0085dc16cc8cbea5c40ec09cfc1fea966be9eeecf35562760bfde8f88e86de6edfaf394501236e229d9c1084fad04fb4dec472ae245d8ae69
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.14.15":
+  version: 20.14.15
+  resolution: "@types/node@npm:20.14.15"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/093713db52dc544f3931a3dec9d7d8ef661f323e57becd083a7918c778cef1eb6ec32d1017bf5ade06bb06dc5c7551f4f4d749a14e40868cce44d51e54acd8ed
   languageName: node
   linkType: hard
 
@@ -3647,6 +3656,13 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: 10c0/2176952b3649293473999a95d7bebfc9dc96410f6cbd3d2595cf12fd401f63a4bf41a7adbfd3ab2ff09ed60cb9870c58c6acdd18b87767366fabfc163700f13b
+  languageName: node
+  linkType: hard
+
+"close-with-grace@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "close-with-grace@npm:1.3.0"
+  checksum: 10c0/b01b213a31b98fff0b50a8f021c59f936c805f24dbc5cc579d3c644e32f19507c4fc6e7489e5fa03ff6ed77f361f63657298e0eb522c6855eec48c1dfa1952df
   languageName: node
   linkType: hard
 
@@ -8832,13 +8848,14 @@ __metadata:
     "@types/express": "npm:^4"
     "@types/fs-extra": "npm:^11.0.4"
     "@types/morgan": "npm:^1"
-    "@types/node": "npm:^20.14.10"
+    "@types/node": "npm:^20.14.15"
     "@types/react": "npm:^18.2.20"
     "@types/react-dom": "npm:^18.2.7"
     "@typescript-eslint/eslint-plugin": "npm:^7.16.0"
     "@typescript-eslint/parser": "npm:^7.16.0"
     autoprefixer: "npm:^10.4.19"
     class-variance-authority: "npm:^0.7.0"
+    close-with-grace: "npm:^1.3.0"
     clsx: "npm:^2.1.1"
     compression: "npm:^1.7.4"
     cookie: "npm:^0.6.0"

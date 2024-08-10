@@ -29,7 +29,7 @@ export function useHints() {
  * if they are not set then reloads the page if any cookie was set to an
  * inaccurate value.
  */
-export function ClientHintCheck() {
+export function ClientHintCheck({ nonce }: { nonce: string }) {
   const { revalidate } = useRevalidator()
   React.useEffect(
     () => subscribeToSchemeChange(() => revalidate()),
@@ -38,6 +38,7 @@ export function ClientHintCheck() {
 
   return (
     <script
+      nonce={nonce}
       dangerouslySetInnerHTML={{
         __html: hintsUtils.getClientHintCheckScript(),
       }}
