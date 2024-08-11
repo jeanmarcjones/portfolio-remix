@@ -1,7 +1,9 @@
 import crypto from 'node:crypto'
+import path from 'node:path'
+import url, { fileURLToPath } from 'node:url'
 
 import { createRequestHandler } from '@remix-run/express'
-import { installGlobals } from '@remix-run/node'
+import { installGlobals, type ServerBuild } from '@remix-run/node'
 import closeWithGrace from 'close-with-grace'
 import compression from 'compression'
 import express, { type Request, type Response } from 'express'
@@ -13,6 +15,7 @@ installGlobals()
 const MODE = process.env.NODE_ENV ?? 'development'
 const IS_PROD = MODE === 'production'
 const IS_DEV = MODE === 'development'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const viteDevServer = IS_PROD
   ? undefined
@@ -22,19 +25,19 @@ const viteDevServer = IS_PROD
       })
     )
 
-const remixHandler = createRequestHandler({
-  mode: MODE,
-  // @ts-expect-error https://github.com/remix-run/remix/issues/8343
-  build: viteDevServer
-    ? () => viteDevServer.ssrLoadModule('virtual:remix/server-build')
-    : // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment -- https://github.com/remix-run/remix/issues/8343
-      // @ts-ignore This should exist before running the server
-      // eslint-disable-next-line import/no-unresolved -- https://github.com/remix-run/remix/issues/8343
-      await import('../build/server/index.js'),
-  getLoadContext: (req: Request, res: Response) => ({
-    cspNonce: res.locals.cspNonce,
-  }),
-})
+async function importServer(): Promise<ServerBuild> {
+  const buildPath = path.join(__dirname, '../build/server/index.js')
+  return import(url.pathToFileURL(buildPath).href)
+}
+
+async function getServerBuild() {
+  return viteDevServer
+    ? // Can't see how to fix this without a type assertion
+      (viteDevServer?.ssrLoadModule(
+        'virtual:remix/server-build'
+      ) as unknown as ServerBuild)
+    : importServer()
+}
 
 const app = express()
 
@@ -88,7 +91,16 @@ app.use(
 )
 
 // handle SSR requests
-app.all('*', remixHandler)
+app.all(
+  '*',
+  createRequestHandler({
+    mode: MODE,
+    build: getServerBuild,
+    getLoadContext: (req: Request, res: Response) => ({
+      cspNonce: res.locals.cspNonce,
+    }),
+  })
+)
 
 const port = process.env.PORT || 3_000
 const server = app.listen(port, () =>
