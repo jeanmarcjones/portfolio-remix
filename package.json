@@ -8,7 +8,7 @@
     "build:server": "tsx ./other/build-server.ts",
     "dev": "tsx watch --clear-screen=false --ignore '.cache/**' --ignore 'app/**' --ignore 'vite.config.ts.timestamp-*' --ignore 'build/**' --ignore 'node_modules/**' --inspect ./server/index.ts",
     "start": "cross-env NODE_ENV=production node ./server-build/index.js",
-    "setup": "build && build:server",
+    "setup": "run build && run build:server && prisma generate && prisma migrate deploy && prisma db seed",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc"
