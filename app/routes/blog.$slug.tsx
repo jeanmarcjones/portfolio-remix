@@ -1,7 +1,9 @@
 import { invariantResponse } from '@epic-web/invariant'
 import { json, type LoaderFunctionArgs } from '@remix-run/node'
-import { useLoaderData } from '@remix-run/react'
+import { Link, useLoaderData } from '@remix-run/react'
+import { ArrowLeft } from 'lucide-react'
 
+import { GeneralErrorBoundary } from '~/components/error-boundary'
 import { prisma } from '~/utils/db.server'
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -21,5 +23,26 @@ export default function ReadPost() {
 
       <p className="whitespace-pre-wrap">{post.content}</p>
     </article>
+  )
+}
+
+export function ErrorBoundary() {
+  return (
+    <GeneralErrorBoundary
+      statusHandlers={{
+        404: () => (
+          <div className="prose flex flex-col gap-6 dark:prose-invert">
+            <h1 className="mb-0">We can&apos;t find this post</h1>
+            <Link
+              to="/blog"
+              className="text-body-md flex items-center underline"
+            >
+              <ArrowLeft />
+              <span>Back to posts</span>
+            </Link>
+          </div>
+        ),
+      }}
+    />
   )
 }

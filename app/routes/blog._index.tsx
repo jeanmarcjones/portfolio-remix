@@ -17,8 +17,6 @@ export async function loader() {
   return json({ posts })
 }
 
-// TODO error boundary?
-
 export default function Blog() {
   const { posts } = useLoaderData<typeof loader>()
 
