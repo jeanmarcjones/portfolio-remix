@@ -1,8 +1,8 @@
-# Title
+# Sqlite
 
-Date: YYYY-MM-DD
+Date: 2024-07-11
 
-Status: accepted | deprecated | superseded by [0005](0005-example.md)
+Status: accepted
 
 ## Context
 
