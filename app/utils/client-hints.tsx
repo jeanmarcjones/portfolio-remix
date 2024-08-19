@@ -4,7 +4,7 @@ import {
   subscribeToSchemeChange,
 } from '@epic-web/client-hints/color-scheme'
 import { useRevalidator } from '@remix-run/react'
-import * as React from 'react'
+import { useEffect } from 'react'
 
 import { useRequestInfo } from './request-info'
 
@@ -31,10 +31,7 @@ export function useHints() {
  */
 export function ClientHintCheck({ nonce }: { nonce: string }) {
   const { revalidate } = useRevalidator()
-  React.useEffect(
-    () => subscribeToSchemeChange(() => revalidate()),
-    [revalidate]
-  )
+  useEffect(() => subscribeToSchemeChange(() => revalidate()), [revalidate])
 
   return (
     <script
