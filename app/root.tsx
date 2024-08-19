@@ -12,7 +12,6 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react'
-import * as React from 'react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
 import Navigation from '~/components/navigation'
