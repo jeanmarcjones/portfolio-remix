@@ -21,8 +21,6 @@ const ThemeFormSchema = z.object({
   theme: z.enum(['system', 'light', 'dark']),
 })
 
-// TODO Resolve error when file is in a route folder
-
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData()
   const submission = parseWithZod(formData, {
@@ -72,11 +70,12 @@ export default function ThemeSwitch({
           <span className="sr-only">open theme selection menu</span>
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent>
         <fetcher.Form
           method="POST"
           {...getFormProps(form)}
-          action="/theme-switch"
+          action="/resources/theme-switch"
         >
           <DropdownMenuItem>
             <Button type="submit" variant="ghost" name="theme" value="light">
@@ -105,21 +104,21 @@ export default function ThemeSwitch({
 }
 
 /**
- * If the user's changing their theme mode preference, this will return the
+ * @description If the user's changing their theme mode preference, this will return the
  * value it's being changed to.
  */
 export function useOptimisticThemeMode() {
   const fetchers = useFetchers()
   const themeFetcher = fetchers.find((f) => f.formAction === '/theme-switch')
 
-  if (themeFetcher && themeFetcher.formData) {
-    const submission = parseWithZod(themeFetcher.formData, {
-      schema: ThemeFormSchema,
-    })
+  if (!themeFetcher?.formData) return
 
-    if (submission.status === 'success') {
-      return submission.value.theme
-    }
+  const submission = parseWithZod(themeFetcher.formData, {
+    schema: ThemeFormSchema,
+  })
+
+  if (submission.status === 'success') {
+    return submission.value.theme
   }
 }
 

@@ -1,4 +1,4 @@
-I was able to fix this for yarn version 4 by following the corepack
+I was able to fix this for yarn version 4 by following the corepack's
 manual [installation instructions][corepack-install].
 
 ```bash

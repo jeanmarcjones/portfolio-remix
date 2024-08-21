@@ -15,7 +15,7 @@ import {
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
 import Navigation from '~/components/navigation'
-import ThemeSwitch, { useTheme } from '~/routes/theme-switch'
+import ThemeSwitch, { useTheme } from '~/routes/resources+/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
 import { useNonce } from '~/utils/nonce-provider'
 import { getTheme, type Theme } from '~/utils/theme.server'
@@ -62,6 +62,7 @@ function Document({
         <Meta />
         <Links />
       </head>
+
       <body>
         {children}
         <ScrollRestoration nonce={nonce} />
@@ -85,7 +86,7 @@ export default function App() {
           <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
         </header>
 
-        <main className="max-w-7xl flex-1">
+        <main className="flex-1">
           <Outlet />
         </main>
       </div>
