@@ -1,8 +1,8 @@
 import { json, type MetaFunction } from '@remix-run/node'
-import { Link, useLoaderData } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 
-import { prisma } from '~/utils/db.server'
-import { truncate } from '~/utils/text'
+import Post from '~/components/post'
+import { getPosts } from '~/routes/md-blog+/posts.[server]'
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,40 +12,35 @@ export const meta: MetaFunction = () => {
 }
 
 export async function loader() {
-  const posts = await prisma.post.findMany()
-
+  const posts = await getPosts()
   return json({ posts })
 }
 
-// TODO Show list of posts from the routes md{x} files
+// TODO Styling for no posts found
 
 export default function Blog() {
   const { posts } = useLoaderData<typeof loader>()
 
   return (
-    <div className="container prose py-6 dark:prose-invert">
-      <h1>Blog</h1>
+    <div className="container py-6">
+      <h1 className="text-5xl font-bold">Blog</h1>
 
-      <div className="flex flex-col gap-4">
-        {posts.length > 0 ? (
-          posts.map((post) => {
-            const content = truncate(post.content)
-
+      {posts.length > 0 ? (
+        <ul className="flex flex-col gap-4">
+          {posts.map((post) => {
             return (
-              <Link
-                key={`post-${post.id}`}
-                className="not-prose flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
-                to={post.slug}
+              <li
+                key={`post-${post.slug}`}
+                className="flex flex-col items-start gap-4 text-left"
               >
-                <div className="text-xl font-semibold">{post.title}</div>
-                <div className="text-m">{content}</div>
-              </Link>
+                <Post {...post} />
+              </li>
             )
-          })
-        ) : (
-          <div className="text-xl">No posts found</div>
-        )}
-      </div>
+          })}
+        </ul>
+      ) : (
+        <h3 className="text-xl">No posts found</h3>
+      )}
     </div>
   )
 }

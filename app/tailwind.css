@@ -1,3 +1,6 @@
+@import '@radix-ui/colors/indigo.css';
+@import '@radix-ui/colors/indigo-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
