@@ -1,6 +1,6 @@
 import { Link } from '@remix-run/react'
 
-import { type PostMeta } from '~/routes/md-blog+/posts.[server]'
+import { type PostMeta } from '~/routes/md-blog+/posts.server'
 
 export default function Post({ slug, frontmatter }: PostMeta) {
   return (
