@@ -2,7 +2,7 @@ import { json, type MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 import Post from '~/components/post'
-import { getPosts } from '~/routes/md-blog+/posts.server'
+import { getPosts } from '~/routes/blog+/posts.server'
 
 export const meta: MetaFunction = () => {
   return [

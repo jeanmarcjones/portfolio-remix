@@ -1,7 +1,7 @@
 export type Frontmatter = {
   title: string
   description: string
-  // published: string; // YYYY-MM-DD
+  // TODO published: string; // YYYY-MM-DD
 }
 
 export type PostMeta = {
@@ -16,7 +16,7 @@ export const getPosts = async (): Promise<PostMeta[]> => {
   const build = await import('virtual:remix/server-build')
 
   const posts = Object.entries(modules).map(([file, post]) => {
-    const id = `routes/md-blog+/${file.replace('./', '').replace(/\.mdx$/, '')}`
+    const id = `routes/blog+/${file.replace('./', '').replace(/\.mdx$/, '')}`
     const slug = build.routes[id].path
 
     if (slug === undefined) throw new Error(`No route for ${id}`)
