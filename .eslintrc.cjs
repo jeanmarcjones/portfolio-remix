@@ -89,6 +89,10 @@ module.exports = {
          */
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
+        /**
+         * @description import rules
+         */
+        'import/no-unresolved': ['error', { ignore: ['^virtual:'] }],
       },
       parserOptions: {
         sourceType: 'module',

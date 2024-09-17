@@ -1,4 +1,4 @@
-import { Link, useLocation } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import { ArrowLeft } from 'lucide-react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
@@ -12,20 +12,15 @@ export default function NotFound() {
 }
 
 export function ErrorBoundary() {
-  const { pathname } = useLocation()
-
   return (
     <GeneralErrorBoundary
       statusHandlers={{
         404: () => (
           <div className="prose flex flex-col gap-6 dark:prose-invert">
-            <h1 className="mb-0">We can&apos;t find this page 😅</h1>
-            <pre className="text-body-lg not-prose whitespace-pre-wrap break-all">
-              {pathname}
-            </pre>
-            <Link to="/" className="flex items-center text-lg underline">
+            <h1 className="mb-0">We can&apos;t find this post 😅</h1>
+            <Link to="/blog" className="flex items-center text-lg underline">
               <ArrowLeft />
-              <span>Back to home</span>
+              <span>Back to posts</span>
             </Link>
           </div>
         ),

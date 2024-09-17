@@ -5,7 +5,6 @@ node_modules
 /server-build
 .env
 coverage
-prisma/data.db
 
 # Yarn PnP
 .pnp.*
