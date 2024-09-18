@@ -2,7 +2,7 @@
 
 Date: 2024-07-11
 
-Status: accepted
+Status: superseded by [0005](005-markdown-as-a-database.md)
 
 ## Context
 
