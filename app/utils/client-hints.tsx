@@ -22,8 +22,6 @@ export function useHints() {
   return requestInfo.hints
 }
 
-// TODO implement CSP and add nonce to script
-
 /**
  * @returns inline script element that checks for client hints and sets cookies
  * if they are not set then reloads the page if any cookie was set to an

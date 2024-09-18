@@ -1,8 +1,10 @@
+import { invariant } from '@epic-web/invariant'
 import { json, type MetaFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
+import { z } from 'zod'
 
 import Post from '~/components/post'
-import { getPosts } from '~/routes/blog+/posts.server'
+import { getPosts, PostMetaSchema } from '~/routes/blog+/posts.server'
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,6 +15,10 @@ export const meta: MetaFunction = () => {
 
 export async function loader() {
   const posts = await getPosts()
+
+  const validation = z.array(PostMetaSchema).safeParse(posts)
+  invariant(validation.success, 'Invalid post meta data')
+
   return json({ posts })
 }
 

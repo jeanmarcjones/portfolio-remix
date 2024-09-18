@@ -1,21 +1,28 @@
-export type Frontmatter = {
-  title: string
-  description: string
-  // TODO published: string; // YYYY-MM-DD
-}
+import { z } from 'zod'
 
-export type PostMeta = {
-  slug: string
-  frontmatter: Frontmatter
-}
+const FrontmatterSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  // TODO published: string; // YYYY-MM-DD
+})
+
+export const PostMetaSchema = z.object({
+  slug: z.string(),
+  frontmatter: FrontmatterSchema,
+})
+
+export type Frontmatter = z.infer<typeof FrontmatterSchema>
+
+export type PostMeta = z.infer<typeof PostMetaSchema>
 
 export const getPosts = async (): Promise<PostMeta[]> => {
   const modules = import.meta.glob<{
     frontmatter: Frontmatter
   }>('./_post+/*.mdx', { eager: true })
+
   const build = await import('virtual:remix/server-build')
 
-  const posts = Object.entries(modules).map(([file, post]) => {
+  return Object.entries(modules).map(([file, post]) => {
     const id = `routes/blog+/${file.replace('./', '').replace(/\.mdx$/, '')}`
     const slug = build.routes[id].path
 
@@ -26,6 +33,4 @@ export const getPosts = async (): Promise<PostMeta[]> => {
       frontmatter: post.frontmatter,
     }
   })
-
-  return posts
 }
