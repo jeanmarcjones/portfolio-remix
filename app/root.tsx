@@ -24,7 +24,9 @@ import { getTheme, type Theme } from '~/utils/theme.server'
 
 import styles from './tailwind.css?url'
 
-export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: styles, as: 'style' },
+]
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
   { title: data ? `Jean-Marc's Portfolio` : `Error | Jean-Marc's Portfolio` },
