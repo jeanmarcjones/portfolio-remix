@@ -103,7 +103,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="flex-1">
+        <main className="w-full">
           <Outlet />
         </main>
       </div>
