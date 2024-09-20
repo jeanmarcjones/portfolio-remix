@@ -9,12 +9,12 @@ export default function AboutLayout() {
       <h1 className="h0 mb-2 ms-1">About</h1>
       <Separator className="mb-8" />
 
-      <div className="flex flex-row gap-14">
+      <div className="flex flex-row gap-[5rem]">
         <div className="flex min-w-max flex-col items-center gap-1">
           <p className="text-3xl font-bold">Jean-Marc Jones</p>
 
           <p className="text-emerald-700 dark:text-indigo-400">
-            React Native Developer
+            Typescript Developer
           </p>
         </div>
 
