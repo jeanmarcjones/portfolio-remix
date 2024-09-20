@@ -1,6 +1,7 @@
 import { Outlet } from '@remix-run/react'
 
 import { Separator } from '~/components/ui/separator'
+import { prose } from '~/utils/misc'
 
 export default function AboutLayout() {
   return (
@@ -12,10 +13,12 @@ export default function AboutLayout() {
         <div className="flex min-w-max flex-col items-center gap-1">
           <p className="text-3xl font-bold">Jean-Marc Jones</p>
 
-          <p className="text-indigo-300">React Native Developer</p>
+          <p className="text-emerald-700 dark:text-indigo-400">
+            React Native Developer
+          </p>
         </div>
 
-        <article className="prose max-w-none dark:prose-invert">
+        <article className={prose('max-w-none')}>
           <Outlet />
         </article>
       </div>
