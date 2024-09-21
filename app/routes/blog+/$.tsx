@@ -16,8 +16,8 @@ export function ErrorBoundary() {
     <GeneralErrorBoundary
       statusHandlers={{
         404: () => (
-          <div className="prose flex flex-col gap-6 dark:prose-invert">
-            <h1 className="mb-0">We can&apos;t find this post 😅</h1>
+          <div className="flex flex-col gap-6">
+            <h1>We can&apos;t find this post 😅</h1>
             <Link to="/blog" className="flex items-center text-lg underline">
               <ArrowLeft />
               <span>Back to posts</span>

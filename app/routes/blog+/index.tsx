@@ -28,8 +28,8 @@ export default function Blog() {
   const { posts } = useLoaderData<typeof loader>()
 
   return (
-    <div className="container py-6">
-      <h1 className="text-5xl font-bold">Blog</h1>
+    <div className="container">
+      <h1 className="h0">Blog</h1>
 
       {posts.length > 0 ? (
         <ul className="flex flex-col gap-4">
