@@ -1,22 +1,39 @@
 import { Link } from '@remix-run/react'
-import { clsx } from 'clsx'
+import { type ClassValue, clsx } from 'clsx'
 
 import { type PostMeta } from '~/routes/blog+/posts.server'
 
+const span = (classValue?: ClassValue): string =>
+  clsx(
+    'block transition',
+    'group-hover:opacity-65 dark:group-hover:opacity-70',
+    classValue
+  )
+
 export default function Post({ slug, frontmatter }: PostMeta) {
   return (
-    <article className="space-y-2">
-      <Link
-        to={`/blog/${slug}`}
+    <Link to={`/blog/${slug}`} className="group space-y-2">
+      <span
         className={clsx(
-          'underline transition',
-          'decoration-emerald-600 hover:decoration-emerald-800',
-          'dark:decoration-indigo-400 dark:hover:decoration-indigo-500'
+          'h3 block text-3xl font-bold underline',
+          'mb-2 mt-6 transition',
+          'decoration-emerald-600 group-hover:decoration-emerald-800',
+          'dark:decoration-indigo-400 dark:group-hover:decoration-indigo-500'
         )}
       >
-        <h3 className="mb-2 mt-6 text-3xl font-bold">{frontmatter.title}</h3>
-      </Link>
-      <p className="font-medium">{frontmatter.description}</p>
-    </article>
+        {frontmatter.title}
+      </span>
+
+      <span className={span('font-medium text-gray-600 dark:text-neutral-300')}>
+        {frontmatter.description}
+      </span>
+
+      <time
+        dateTime={frontmatter.published}
+        className={span('text-sm text-emerald-600 dark:text-indigo-400')}
+      >
+        {frontmatter.published}
+      </time>
+    </Link>
   )
 }

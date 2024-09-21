@@ -3,7 +3,7 @@ import { z } from 'zod'
 const FrontmatterSchema = z.object({
   title: z.string(),
   description: z.string(),
-  // TODO published: string; // YYYY-MM-DD
+  published: z.string().date(),
 })
 
 export const PostMetaSchema = z.object({
