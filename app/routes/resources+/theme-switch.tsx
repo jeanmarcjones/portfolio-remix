@@ -52,9 +52,9 @@ export default function ThemeSwitch({
   const optimisticMode = useOptimisticThemeMode()
   const mode = optimisticMode ?? userPreference ?? 'system'
   const modeIcon = {
-    light: <Sun />,
-    dark: <Moon />,
-    system: <Monitor />,
+    light: <Sun size={22} />,
+    dark: <Moon size={22} />,
+    system: <Monitor size={22} />,
   }
 
   return (
@@ -63,7 +63,7 @@ export default function ThemeSwitch({
         <Button
           variant="outline"
           size="icon"
-          className="h-12 w-12 rounded-full drop-shadow"
+          className="h-10 w-10 rounded-full drop-shadow"
           color="red"
         >
           {modeIcon[mode]}
@@ -79,21 +79,21 @@ export default function ThemeSwitch({
         >
           <DropdownMenuItem>
             <Button type="submit" variant="ghost" name="theme" value="light">
-              <Sun className="mr-3 h-4 w-4" />
+              <Sun className="mr-2 h-4 w-4" />
               <span>Light</span>
             </Button>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Button type="submit" variant="ghost" name="theme" value="dark">
-              <Moon className="mr-3 h-4 w-4" />
+              <Moon className="mr-2 h-4 w-4" />
               <span>Dark</span>
             </Button>
           </DropdownMenuItem>
 
           <DropdownMenuItem>
             <Button type="submit" variant="ghost" name="theme" value="system">
-              <Monitor className="mr-3 h-4 w-4" />
+              <Monitor className="mr-2 h-4 w-4" />
               <span>System</span>
             </Button>
           </DropdownMenuItem>

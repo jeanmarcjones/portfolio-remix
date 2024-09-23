@@ -14,7 +14,9 @@ import {
 } from '@remix-run/react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
+import { Icons } from '~/components/icons'
 import Navigation from '~/components/navigation'
+import { Button } from '~/components/ui/button'
 import ThemeSwitch, { useTheme } from '~/routes/resources+/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
 import { useNonce } from '~/utils/nonce-provider'
@@ -22,7 +24,9 @@ import { getTheme, type Theme } from '~/utils/theme.server'
 
 import styles from './tailwind.css?url'
 
-export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: styles, as: 'styles' },
+]
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
   { title: data ? `Jean-Marc's Portfolio` : `Error | Jean-Marc's Portfolio` },
@@ -83,10 +87,23 @@ export default function App() {
         <header className="flex justify-between border-b px-16 py-1">
           <Navigation />
 
-          <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
+          <div className="flex items-center gap-3">
+            <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
+
+            <Button asChild variant="ghost" size="icon">
+              <a
+                href="https://github.com/jeanmarcjones"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icons.gitHub className="h-[28px] w-[28px]" />
+                <span className="sr-only">GitHub</span>
+              </a>
+            </Button>
+          </div>
         </header>
 
-        <main className="flex-1">
+        <main className="w-full">
           <Outlet />
         </main>
       </div>
