@@ -9,7 +9,7 @@ export default function AboutLayout() {
       <h1 className="h0 mb-2 ms-1">About</h1>
       <Separator className="mb-8" />
 
-      <div className="flex flex-row gap-[5rem]">
+      <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
         <div className="flex min-w-max flex-col items-center gap-1">
           <p className="text-3xl font-bold">Jean-Marc Jones</p>
 
