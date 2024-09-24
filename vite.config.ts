@@ -1,3 +1,5 @@
+/// <reference types="vitest/config" />
+
 import mdx from '@mdx-js/rollup'
 import { vitePlugin as remix } from '@remix-run/dev'
 import { rehypePrettyCode } from 'rehype-pretty-code'
@@ -7,7 +9,7 @@ import { flatRoutes } from 'remix-flat-routes'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-export default defineConfig({
+export default defineConfig(() => ({
   plugins: [
     tsconfigPaths(),
     mdx({
@@ -37,4 +39,13 @@ export default defineConfig({
       },
     }),
   ],
-})
+  test: {
+    include: ['./app/**/*.test.{ts,tsx}'],
+    restoreMocks: true,
+    coverage: {
+      include: ['app/**/*.{ts,tsx}'],
+      exclude: ['**/types/**/*', '**/*.test.{ts,tsx}'],
+      all: true,
+    },
+  },
+}))
