@@ -74,6 +74,9 @@ const config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
+    aria: {
+      active: 'current=page',
+    },
   },
   plugins: [animatePlugin, radixPlugin, typography],
 } satisfies Config

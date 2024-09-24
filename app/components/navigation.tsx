@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 
 import {
   NavigationMenu,
@@ -14,13 +14,13 @@ export default function Navigation() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link to="/">About</Link>
+            <NavLink to="/">About</NavLink>
           </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link to="/blog">Blog</Link>
+            <NavLink to="/blog">Blog</NavLink>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
