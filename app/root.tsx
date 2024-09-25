@@ -12,10 +12,11 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react'
+import { type ReactNode } from 'react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
 import { Icons } from '~/components/icons'
-import Navigation from '~/components/navigation'
+import MainMenu from '~/components/main-menu'
 import { Button } from '~/components/ui/button'
 import ThemeSwitch, { useTheme } from '~/routes/resources+/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
@@ -52,7 +53,7 @@ function Document({
   nonce,
   theme = 'light',
 }: {
-  children: React.ReactNode
+  children: ReactNode
   nonce: string
   theme?: Theme
 }) {
@@ -84,10 +85,10 @@ export default function App() {
   return (
     <Document nonce={nonce} theme={theme}>
       <div className="h-screen overflow-x-hidden">
-        <header className="flex justify-between border-b px-16 py-1">
-          <Navigation />
+        <header className="flex justify-between border-b px-1 py-1 sm:px-2 md:px-4 lg:px-4 2xl:px-16">
+          <MainMenu />
 
-          <div className="flex items-center gap-3">
+          <nav className="flex items-center gap-3">
             <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
 
             <Button asChild variant="ghost" size="icon">
@@ -100,7 +101,7 @@ export default function App() {
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
-          </div>
+          </nav>
         </header>
 
         <main className="w-full">
