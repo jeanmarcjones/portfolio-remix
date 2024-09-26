@@ -18,6 +18,7 @@ export default function MobileNav() {
           className="px-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <EllipsisVertical />
+          <span className="sr-only">Open navigation menu</span>
         </Button>
       </SheetTrigger>
 

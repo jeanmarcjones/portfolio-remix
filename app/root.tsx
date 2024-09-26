@@ -15,11 +15,9 @@ import {
 import { type ReactNode } from 'react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
-import { Icons, navIconSize } from '~/components/icons'
-import MainNav from '~/components/main-nav'
-import MobileNav from '~/components/mobile-nav'
-import { Button } from '~/components/ui/button'
-import ThemeSwitch, { useTheme } from '~/routes/resources+/theme-switch'
+import SiteFooter from '~/components/site-footer'
+import SiteHeader from '~/components/site-header'
+import { useTheme } from '~/routes/resources+/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
 import { useNonce } from '~/utils/nonce-provider'
 import { getTheme, type Theme } from '~/utils/theme.server'
@@ -85,30 +83,14 @@ export default function App() {
 
   return (
     <Document nonce={nonce} theme={theme}>
-      <div className="h-screen overflow-x-hidden">
-        <header className="container flex justify-between border-b py-1 sm:max-w-none">
-          <MainNav />
-          <MobileNav />
+      <div className="flex min-h-screen flex-col">
+        <SiteHeader theme={data.requestInfo.userPerfs.theme} />
 
-          <nav className="flex items-center gap-1">
-            <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
-
-            <Button asChild variant="ghost" size="icon">
-              <a
-                href="https://github.com/jeanmarcjones"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icons.gitHub className={navIconSize} />
-                <span className="sr-only">GitHub</span>
-              </a>
-            </Button>
-          </nav>
-        </header>
-
-        <main className="w-full">
+        <main className="w-full flex-1">
           <Outlet />
         </main>
+
+        <SiteFooter />
       </div>
     </Document>
   )

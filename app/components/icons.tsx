@@ -1,4 +1,3 @@
-import { clsx } from 'clsx'
 import { type HTMLAttributes } from 'react'
 
 type IconProps = HTMLAttributes<SVGElement> & { size?: string | number }
@@ -24,4 +23,4 @@ export const Icons = {
   ),
 }
 
-export const navIconSize = clsx('h-4/6 w-4/6')
+export const navIconStyles = 'h-4/6 w-4/6'

@@ -6,7 +6,7 @@ import { useFetcher, useFetchers } from '@remix-run/react'
 import { Monitor, Moon, Sun } from 'lucide-react'
 import { z } from 'zod'
 
-import { navIconSize } from '~/components/icons'
+import { navIconStyles } from '~/components/icons'
 import { Button } from '~/components/ui/button'
 import {
   DropdownMenu,
@@ -53,9 +53,9 @@ export default function ThemeSwitch({
   const optimisticMode = useOptimisticThemeMode()
   const mode = optimisticMode ?? userPreference ?? 'system'
   const modeIcon = {
-    light: <Sun className={navIconSize} />,
-    dark: <Moon className={navIconSize} />,
-    system: <Monitor className={navIconSize} />,
+    light: <Sun className={navIconStyles} />,
+    dark: <Moon className={navIconStyles} />,
+    system: <Monitor className={navIconStyles} />,
   }
 
   return (
