@@ -15,7 +15,7 @@ import {
 import { type ReactNode } from 'react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
-import { Icons } from '~/components/icons'
+import { Icons, navIconSize } from '~/components/icons'
 import MainNav from '~/components/main-nav'
 import MobileNav from '~/components/mobile-nav'
 import { Button } from '~/components/ui/button'
@@ -90,7 +90,7 @@ export default function App() {
           <MainNav />
           <MobileNav />
 
-          <nav className="flex items-center gap-3">
+          <nav className="flex items-center gap-1">
             <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
 
             <Button asChild variant="ghost" size="icon">
@@ -99,7 +99,7 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Icons.gitHub className="h-[28px] w-[28px]" />
+                <Icons.gitHub className={navIconSize} />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
