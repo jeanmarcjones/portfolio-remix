@@ -6,7 +6,7 @@ import { prose } from '~/utils/misc'
 export default function AboutLayout() {
   return (
     <div className="container">
-      <h1 className="h0 mb-2 ms-1">About</h1>
+      <h1 className="h0 mb-2 ms-1 text-center lg:text-left">About</h1>
       <Separator className="mb-8" />
 
       <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">

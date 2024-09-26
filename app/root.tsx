@@ -85,7 +85,7 @@ export default function App() {
   return (
     <Document nonce={nonce} theme={theme}>
       <div className="h-screen overflow-x-hidden">
-        <header className="flex justify-between border-b px-1 py-1 sm:px-2 md:px-4 lg:px-4 2xl:px-16">
+        <header className="container flex justify-between border-b py-1 sm:max-w-none">
           <MainMenu />
 
           <nav className="flex items-center gap-3">

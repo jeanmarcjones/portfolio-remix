@@ -13,8 +13,8 @@ const linkStyles = clsx(
 
 export default function MainMenu() {
   return (
-    <div className="hidden items-center gap-4 md:flex">
-      <Icons.logo className="h-8 w-8" />
+    <div className="hidden items-center gap-4 md:flex lg:gap-5 2xl:gap-7">
+      <Icons.logo className="xl: h-6 w-6 2xl:h-8 2xl:w-8" />
 
       <nav className="flex items-center gap-2 text-sm">
         <NavLink to="/" className={linkStyles}>
