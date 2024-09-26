@@ -16,7 +16,8 @@ import { type ReactNode } from 'react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
 import { Icons } from '~/components/icons'
-import MainMenu from '~/components/main-menu'
+import MainNav from '~/components/main-nav'
+import MobileNav from '~/components/mobile-nav'
 import { Button } from '~/components/ui/button'
 import ThemeSwitch, { useTheme } from '~/routes/resources+/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
@@ -86,7 +87,8 @@ export default function App() {
     <Document nonce={nonce} theme={theme}>
       <div className="h-screen overflow-x-hidden">
         <header className="container flex justify-between border-b py-1 sm:max-w-none">
-          <MainMenu />
+          <MainNav />
+          <MobileNav />
 
           <nav className="flex items-center gap-3">
             <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
