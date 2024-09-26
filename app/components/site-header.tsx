@@ -11,8 +11,8 @@ interface Props {
 
 export default function SiteHeader({ theme }: Props) {
   return (
-    <header className="sticky top-0 border-b bg-background py-1 sm:max-w-none">
-      <div className="container flex items-center justify-between">
+    <header className="sticky top-0 border-b bg-background py-1">
+      <div className="container flex items-center justify-between xl:max-w-screen-2xl 2xl:max-w-3xl">
         <MainNav />
         <MobileNav />
 

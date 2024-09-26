@@ -11,7 +11,7 @@ export default function AboutLayout() {
       </h1>
       <Separator className="mb-8" />
 
-      <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
+      <div className="flex flex-col gap-8 lg:flex-row lg:gap-20">
         <section className="flex min-w-max flex-col items-center gap-1">
           <h2 className="text-3xl">Jean-Marc Jones</h2>
 
