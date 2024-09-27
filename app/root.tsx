@@ -22,10 +22,24 @@ import { ClientHintCheck, getHints } from '~/utils/client-hints'
 import { useNonce } from '~/utils/nonce-provider'
 import { getTheme, type Theme } from '~/utils/theme.server'
 
-import styles from './tailwind.css?url'
+import appleTouchIconAssetUrl from './assets/favicons/apple-touch-icon.png'
+import faviconAssetUrl from './assets/favicons/favicon.svg'
+import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: styles, as: 'styles' },
+  {
+    rel: 'icon',
+    href: '/favicon.ico',
+    sizes: '48x48',
+  },
+  { rel: 'icon', type: 'image/svg+xml', href: faviconAssetUrl },
+  { rel: 'apple-touch-icon', sizes: '180x180', href: appleTouchIconAssetUrl },
+  {
+    rel: 'manifest',
+    href: '/site.webmanifest',
+    crossOrigin: 'use-credentials',
+  },
+  { rel: 'stylesheet', href: tailwindStyleSheetUrl, as: 'styles' },
 ]
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
