@@ -82,32 +82,38 @@
     @apply bg-background text-foreground;
   }
 
-  .h0 {
-    @apply text-5xl font-extrabold;
+  .h0,
+  .prose > .h0 {
+    @apply text-4xl font-extrabold md:text-5xl;
   }
 
   h1,
-  .h1 {
-    @apply mt-8 text-4xl font-extrabold;
+  .h1,
+  .prose > h1 {
+    @apply mt-8 text-2xl font-extrabold md:text-4xl;
   }
 
   h2,
-  .h2 {
-    @apply text-2xl font-bold;
+  .h2,
+  .prose > h2 {
+    @apply text-xl font-bold md:text-2xl;
   }
 
   h3,
-  .h3 {
-    @apply text-xl font-semibold;
+  .h3,
+  .prose > h3 {
+    @apply text-base font-semibold md:text-xl;
   }
 
   h4,
-  .h4 {
-    @apply text-base font-bold;
+  .h4,
+  .prose > h4 {
+    @apply text-sm font-bold md:text-base;
   }
 
   body,
-  .p {
-    @apply text-base;
+  .p,
+  .prose > p {
+    @apply text-sm md:text-base;
   }
 }
