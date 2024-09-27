@@ -1,4 +1,4 @@
-import { NavLink } from '@remix-run/react'
+import { Link, NavLink } from '@remix-run/react'
 import { clsx } from 'clsx'
 
 import { Icons } from '~/components/icons'
@@ -14,7 +14,9 @@ const linkStyles = clsx(
 export default function MainNav() {
   return (
     <div className="hidden items-center gap-4 md:flex lg:gap-5 2xl:gap-7">
-      <Icons.logo className="h-6 w-6 2xl:h-8 2xl:w-8" />
+      <Link to="/">
+        <Icons.logo className="h-6 w-6 2xl:h-8 2xl:w-8" />
+      </Link>
 
       <nav className="flex items-center gap-2 text-sm">
         <NavLink to="/" className={linkStyles}>

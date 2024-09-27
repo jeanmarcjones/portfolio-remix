@@ -1,4 +1,4 @@
-import { NavLink, type NavLinkProps } from '@remix-run/react'
+import { Link, NavLink, type NavLinkProps } from '@remix-run/react'
 import { clsx } from 'clsx'
 import { EllipsisVertical } from 'lucide-react'
 import { type RefAttributes, useState } from 'react'
@@ -23,7 +23,9 @@ export default function MobileNav() {
       </SheetTrigger>
 
       <SheetContent side="left">
-        <Icons.logo className="m-auto my-12 h-12 w-12" />
+        <Link to="/">
+          <Icons.logo className="m-auto my-12 h-12 w-12" />
+        </Link>
 
         <nav className="flex flex-col gap-7">
           <MobileLink to="/">About</MobileLink>
