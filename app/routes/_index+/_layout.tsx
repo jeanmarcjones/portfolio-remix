@@ -1,4 +1,5 @@
 import { Outlet } from '@remix-run/react'
+import { clsx } from 'clsx'
 
 import { Separator } from '~/components/ui/separator'
 import { prose } from '~/utils/misc'
@@ -12,13 +13,29 @@ export default function AboutLayout() {
       <Separator className="mb-8" />
 
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-20">
-        <section className="flex min-w-max flex-col items-center gap-1">
-          <h2 className="text-3xl">Jean-Marc Jones</h2>
+        <aside className="flex flex-col items-center gap-1 md:min-w-max">
+          <div
+            className={clsx(
+              'mb-4 h-36 w-36 rounded-full',
+              'flex items-center justify-center',
+              'bg-gradient-to-b from-indigo-400 to-emerald-400 dark:from-emerald-600 dark:to-indigo-600'
+            )}
+          >
+            <img
+              src="/img/avatar.png"
+              alt="Avatar"
+              className="w-24 -rotate-[7deg] object-contain"
+            />
+          </div>
 
-          <p className="text-emerald-700 dark:text-indigo-400">
+          <h2 className="text-center text-xl md:text-2xl lg:text-3xl">
+            Jean-Marc Jones
+          </h2>
+
+          <p className="text-center text-emerald-600 dark:text-indigo-400">
             Typescript Developer
           </p>
-        </section>
+        </aside>
 
         <article className={prose('max-w-none')}>
           <Outlet />
