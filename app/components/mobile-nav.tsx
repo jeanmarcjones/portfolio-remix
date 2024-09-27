@@ -10,6 +10,8 @@ import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet'
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
 
+  const close = () => setOpen(false)
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -28,9 +30,13 @@ export default function MobileNav() {
         </Link>
 
         <nav className="flex flex-col gap-7">
-          <MobileLink to="/">About</MobileLink>
+          <MobileLink to="/" onClick={close}>
+            About
+          </MobileLink>
 
-          <MobileLink to="/blog">Blog</MobileLink>
+          <MobileLink to="/blog" onClick={close}>
+            Blog
+          </MobileLink>
         </nav>
       </SheetContent>
     </Sheet>
