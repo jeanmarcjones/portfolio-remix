@@ -1,4 +1,4 @@
-name: 🔎 Static Analysis
+name: 🔎 Tests
 
 on:
   push:
@@ -48,3 +48,25 @@ jobs:
 
       - name: ☂️ Type check
         run: yarn typecheck
+
+  vitest:
+    name: ⚡ Vitest
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: 📥 Download deps
+        run: yarn install --frozen-lockfile --immutable
+
+      - name: 🧱 Generate build
+        run: yarn build
+
+      - name: ⚡ Run vitest
+        run: yarn test -- --coverage

@@ -1,9 +1,3 @@
-/**
- * This is intended to be a basic starting point for linting in your app.
- * It relies on recommended configs out of the box for simplicity, but you can
- * and should modify this configuration to best suit your team's needs.
- */
-
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
@@ -70,6 +64,9 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        'react/prop-types': 'off',
+      },
     },
 
     // Typescript
@@ -94,6 +91,10 @@ module.exports = {
         'plugin:import/typescript',
       ],
       rules: {
+        /**
+         * @description @typescript-eslint rules
+         */
+        '@typescript-eslint/triple-slash-reference': 'off',
         /**
          * @description simple-import-sort rules
          */

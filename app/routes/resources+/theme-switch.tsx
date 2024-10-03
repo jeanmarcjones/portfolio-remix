@@ -6,6 +6,7 @@ import { useFetcher, useFetchers } from '@remix-run/react'
 import { Monitor, Moon, Sun } from 'lucide-react'
 import { z } from 'zod'
 
+import { navIconStyles } from '~/components/icons'
 import { Button } from '~/components/ui/button'
 import {
   DropdownMenu,
@@ -52,22 +53,19 @@ export default function ThemeSwitch({
   const optimisticMode = useOptimisticThemeMode()
   const mode = optimisticMode ?? userPreference ?? 'system'
   const modeIcon = {
-    light: <Sun size={22} />,
-    dark: <Moon size={22} />,
-    system: <Monitor size={22} />,
+    light: <Sun className={navIconStyles} aria-label="Light theme active" />,
+    dark: <Moon className={navIconStyles} aria-label="Dark theme active" />,
+    system: (
+      <Monitor className={navIconStyles} aria-label="System theme active" />
+    ),
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-10 w-10 rounded-full drop-shadow"
-          color="red"
-        >
+        <Button variant="ghost" size="icon">
           {modeIcon[mode]}
-          <span className="sr-only">open theme selection menu</span>
+          <span className="sr-only">Change theme</span>
         </Button>
       </DropdownMenuTrigger>
 
@@ -109,7 +107,9 @@ export default function ThemeSwitch({
  */
 export function useOptimisticThemeMode() {
   const fetchers = useFetchers()
-  const themeFetcher = fetchers.find((f) => f.formAction === '/theme-switch')
+  const themeFetcher = fetchers.find(
+    (f) => f.formAction === '/resources/theme-switch'
+  )
 
   if (!themeFetcher?.formData) return
 

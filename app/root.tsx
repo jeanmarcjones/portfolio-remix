@@ -12,20 +12,34 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react'
+import { type ReactNode } from 'react'
 
 import { GeneralErrorBoundary } from '~/components/error-boundary'
-import { Icons } from '~/components/icons'
-import Navigation from '~/components/navigation'
-import { Button } from '~/components/ui/button'
-import ThemeSwitch, { useTheme } from '~/routes/resources+/theme-switch'
+import SiteFooter from '~/components/site-footer'
+import SiteHeader from '~/components/site-header'
+import { useTheme } from '~/routes/resources+/theme-switch'
 import { ClientHintCheck, getHints } from '~/utils/client-hints'
 import { useNonce } from '~/utils/nonce-provider'
 import { getTheme, type Theme } from '~/utils/theme.server'
 
-import styles from './tailwind.css?url'
+import appleTouchIconAssetUrl from './assets/favicons/apple-touch-icon.png'
+import faviconAssetUrl from './assets/favicons/favicon.svg'
+import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: styles, as: 'styles' },
+  {
+    rel: 'icon',
+    href: '/favicon.ico',
+    sizes: '48x48',
+  },
+  { rel: 'icon', type: 'image/svg+xml', href: faviconAssetUrl },
+  { rel: 'apple-touch-icon', sizes: '180x180', href: appleTouchIconAssetUrl },
+  {
+    rel: 'manifest',
+    href: '/site.webmanifest',
+    crossOrigin: 'use-credentials',
+  },
+  { rel: 'stylesheet', href: tailwindStyleSheetUrl, as: 'styles' },
 ]
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [
@@ -52,7 +66,7 @@ function Document({
   nonce,
   theme = 'light',
 }: {
-  children: React.ReactNode
+  children: ReactNode
   nonce: string
   theme?: Theme
 }) {
@@ -83,29 +97,14 @@ export default function App() {
 
   return (
     <Document nonce={nonce} theme={theme}>
-      <div className="h-screen overflow-x-hidden">
-        <header className="flex justify-between border-b px-16 py-1">
-          <Navigation />
+      <div className="flex min-h-screen flex-col">
+        <SiteHeader theme={data.requestInfo.userPerfs.theme} />
 
-          <div className="flex items-center gap-3">
-            <ThemeSwitch userPreference={data.requestInfo.userPerfs.theme} />
-
-            <Button asChild variant="ghost" size="icon">
-              <a
-                href="https://github.com/jeanmarcjones"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icons.gitHub className="h-[28px] w-[28px]" />
-                <span className="sr-only">GitHub</span>
-              </a>
-            </Button>
-          </div>
-        </header>
-
-        <main className="w-full">
+        <main className="w-full flex-1">
           <Outlet />
         </main>
+
+        <SiteFooter />
       </div>
     </Document>
   )
