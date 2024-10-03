@@ -2,7 +2,7 @@ import * as cookie from 'cookie'
 
 export type Theme = 'light' | 'dark'
 
-const cookieName = 'co.jean-marc.theme'
+export const cookieName = 'co.jean-marc.theme'
 
 export function getTheme(request: Request): Theme | null {
   const cookieHeader = request.headers.get('cookie')

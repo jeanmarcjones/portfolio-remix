@@ -53,9 +53,11 @@ export default function ThemeSwitch({
   const optimisticMode = useOptimisticThemeMode()
   const mode = optimisticMode ?? userPreference ?? 'system'
   const modeIcon = {
-    light: <Sun className={navIconStyles} />,
-    dark: <Moon className={navIconStyles} />,
-    system: <Monitor className={navIconStyles} />,
+    light: <Sun className={navIconStyles} aria-label="Light theme active" />,
+    dark: <Moon className={navIconStyles} aria-label="Dark theme active" />,
+    system: (
+      <Monitor className={navIconStyles} aria-label="System theme active" />
+    ),
   }
 
   return (
@@ -63,7 +65,7 @@ export default function ThemeSwitch({
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
           {modeIcon[mode]}
-          <span className="sr-only">open theme selection menu</span>
+          <span className="sr-only">Change theme</span>
         </Button>
       </DropdownMenuTrigger>
 
@@ -105,7 +107,9 @@ export default function ThemeSwitch({
  */
 export function useOptimisticThemeMode() {
   const fetchers = useFetchers()
-  const themeFetcher = fetchers.find((f) => f.formAction === '/theme-switch')
+  const themeFetcher = fetchers.find(
+    (f) => f.formAction === '/resources/theme-switch'
+  )
 
   if (!themeFetcher?.formData) return
 
