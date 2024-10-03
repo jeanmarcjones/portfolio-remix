@@ -49,7 +49,7 @@ export default defineConfig({
     setupFiles: ['./test/vitest-setup.ts'],
     coverage: {
       include: ['app/**/*.{ts,tsx}'],
-      exclude: ['**/types/**/*', '**/*.test.{ts,tsx}'],
+      exclude: ['**/types/**/*', '**/*.test.{ts,tsx}', 'app/*.tsx'],
       all: true,
     },
     alias: {
