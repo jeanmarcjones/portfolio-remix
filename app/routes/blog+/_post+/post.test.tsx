@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react'
 import { expect, test } from 'vitest'
 
 import { default as Post } from './_layout'
-import MDX from './yarn-four-install.mdx'
+import MDX from './install-yarn-berry-asdf.mdx'
 
 test('Renders mdx content on post page', async () => {
   const App = createRemixStub([
