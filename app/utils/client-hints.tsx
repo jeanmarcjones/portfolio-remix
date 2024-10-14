@@ -15,7 +15,7 @@ const hintsUtils = getHintUtils({
 export const { getHints } = hintsUtils
 
 /**
- * @returns an object with the client hints and their values
+ * @returns An object with the client hints and their values.
  */
 export function useHints() {
   const requestInfo = useRequestInfo()
@@ -23,9 +23,9 @@ export function useHints() {
 }
 
 /**
- * @returns inline script element that checks for client hints and sets cookies
- * if they are not set then reloads the page if any cookie was set to an
- * inaccurate value.
+ * @returns Inline script element that checks for client hints and sets cookies
+ * if they aren't set. If any cookie was set to an inaccurate value the page is
+ * reloaded.
  */
 export function ClientHintCheck({ nonce }: { nonce: string }) {
   const { revalidate } = useRevalidator()
