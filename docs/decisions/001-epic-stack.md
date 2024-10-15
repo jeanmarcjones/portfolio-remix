@@ -12,7 +12,7 @@ before I learned React. This was the perfect opportunity to kill two birds with 
 
 I knew that Kent C. Dodds' Remix template "Epic Stack" would be the ideal way to expose myself to both Remix and web
 best practices. However, I was hesitant to use it because I didn't have the time or money to complete the templates
-([instruction manual][1]).
+[instruction manual][1].
 
 ## Decision
 
