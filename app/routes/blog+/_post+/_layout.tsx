@@ -1,11 +1,11 @@
 import { Outlet } from '@remix-run/react'
 
-import { prose } from '~/utils/misc'
+import Prose from '~/components/prose'
 
 export default function BlogPostLayout() {
   return (
-    <article className={prose('container pt-8')}>
+    <Prose className="container pt-8">
       <Outlet />
-    </article>
+    </Prose>
   )
 }
