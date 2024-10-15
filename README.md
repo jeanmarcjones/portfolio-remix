@@ -1,13 +1,13 @@
-# Welcome to Remix!
+# Jean-Marc's Portfolio
 
-- 📖 [Remix docs](https://remix.run/docs)
+My portfolio website made with the Remix framework.
 
 ## Development
 
 Run the dev server:
 
 ```shellscript
-npm run dev
+yarn dev
 ```
 
 ## Deployment
@@ -15,26 +15,21 @@ npm run dev
 First, build your app for production:
 
 ```sh
-npm run build
+yarn build
 ```
 
 Then run the app in production mode:
 
 ```sh
-npm start
+yarn start
 ```
 
-Now you'll need to pick a host to deploy it to.
+## Inspirations
 
-### DIY
+While building this site I used the following repos as source of ideas and code.
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+- [Epic Stack](https://github.com/epicweb-dev/epic-stack)
+- [Remix Blog MDX](https://github.com/pcattori/remix-blog-mdx)
 
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+For more context you can read the [epic stack](/docs/decisions/001-epic-stack.md)
+and [MDX routes](/docs/decisions/005-markdown-as-a-database.md) decision documentation.
