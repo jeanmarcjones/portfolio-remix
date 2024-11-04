@@ -1,11 +1,11 @@
 import { Link, NavLink, type NavLinkProps } from '@remix-run/react'
-import { clsx } from 'clsx'
 import { EllipsisVertical } from 'lucide-react'
 import { type RefAttributes, useState } from 'react'
 
 import { Icons } from '~/components/icons'
 import { Button } from '~/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '~/components/ui/sheet'
+import { cn } from '~/utils/misc'
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -49,7 +49,7 @@ function MobileLink({
   ...props
 }: NavLinkProps & RefAttributes<HTMLAnchorElement>) {
   return (
-    <NavLink className={clsx('text-2xl', className)} {...props}>
+    <NavLink className={cn('text-2xl', className)} {...props}>
       {children}
     </NavLink>
   )

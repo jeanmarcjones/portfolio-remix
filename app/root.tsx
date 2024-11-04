@@ -39,7 +39,7 @@ export const links: LinksFunction = () => [
     href: '/site.webmanifest',
     crossOrigin: 'use-credentials',
   },
-  { rel: 'stylesheet', href: tailwindStyleSheetUrl, as: 'styles' },
+  { rel: 'stylesheet', href: tailwindStyleSheetUrl, as: 'style' },
 ]
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => [

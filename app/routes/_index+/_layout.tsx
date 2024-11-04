@@ -1,8 +1,19 @@
 import { Outlet } from '@remix-run/react'
-import { clsx } from 'clsx'
 
+import Prose from '~/components/prose'
 import { Separator } from '~/components/ui/separator'
-import { prose } from '~/utils/misc'
+
+function Avatar() {
+  return (
+    <div className="mb-4 flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-b from-indigo-400 to-emerald-400 dark:from-emerald-600 dark:to-indigo-600">
+      <img
+        src="/img/avatar.png"
+        alt="Avatar"
+        className="w-24 -rotate-[7deg] object-contain"
+      />
+    </div>
+  )
+}
 
 export default function AboutLayout() {
   return (
@@ -14,19 +25,7 @@ export default function AboutLayout() {
 
       <div className="flex flex-col gap-8 lg:flex-row lg:gap-20">
         <aside className="flex flex-col items-center gap-1 md:min-w-max">
-          <div
-            className={clsx(
-              'mb-4 h-36 w-36 rounded-full',
-              'flex items-center justify-center',
-              'bg-gradient-to-b from-indigo-400 to-emerald-400 dark:from-emerald-600 dark:to-indigo-600'
-            )}
-          >
-            <img
-              src="/img/avatar.png"
-              alt="Avatar"
-              className="w-24 -rotate-[7deg] object-contain"
-            />
-          </div>
+          <Avatar />
 
           <h2 className="text-center text-xl md:text-2xl lg:text-3xl">
             Jean-Marc Jones
@@ -37,9 +36,9 @@ export default function AboutLayout() {
           </p>
         </aside>
 
-        <article className={prose('max-w-none')}>
+        <Prose className="max-w-none">
           <Outlet />
-        </article>
+        </Prose>
       </div>
     </div>
   )
