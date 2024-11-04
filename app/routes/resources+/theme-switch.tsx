@@ -102,8 +102,8 @@ export default function ThemeSwitch({
 }
 
 /**
- * @description If the user's changing their theme mode preference, this will return the
- * value it's being changed to.
+ * @description If the user's changing their theme mode preference, this will
+ * return the value it's being changed to.
  */
 export function useOptimisticThemeMode() {
   const fetchers = useFetchers()
@@ -123,7 +123,7 @@ export function useOptimisticThemeMode() {
 }
 
 /**
- * @returns the user's theme preference, or the client hint theme if the user
+ * @returns The user's theme preference, or the client hint theme if the user
  * has not set a preference.
  */
 export function useTheme() {

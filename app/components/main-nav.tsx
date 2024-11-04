@@ -1,15 +1,11 @@
 import { Link, NavLink } from '@remix-run/react'
-import { clsx } from 'clsx'
 
 import { Icons } from '~/components/icons'
 
-const linkStyles = clsx(
-  'rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors',
-  'hover:text-bg-accent/80 hover:bg-accent hover:text-accent-foreground',
-  'disabled:pointer-events-none disabled:opacity-50',
-  'focus:bg-accent focus:text-accent-foreground focus:outline-none',
-  'aria-active:bg-accent/50'
-)
+const navigationLinkItems = [
+  { title: 'about', url: '/' },
+  { title: 'Blog', url: '/blog' },
+] as const
 
 export default function MainNav() {
   return (
@@ -19,13 +15,15 @@ export default function MainNav() {
       </Link>
 
       <nav className="flex items-center gap-2 text-sm">
-        <NavLink to="/" className={linkStyles}>
-          About
-        </NavLink>
-
-        <NavLink to="/blog" className={linkStyles}>
-          Blog
-        </NavLink>
+        {navigationLinkItems.map((link) => (
+          <NavLink
+            key={`nav-link-${link.title}`}
+            to={link.url}
+            className="hover:text-bg-accent/80 rounded-md bg-background px-4 py-2 text-sm font-medium capitalize transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 aria-active:bg-accent/50"
+          >
+            {link.title}
+          </NavLink>
+        ))}
       </nav>
     </div>
   )

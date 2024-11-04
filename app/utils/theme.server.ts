@@ -4,6 +4,10 @@ export type Theme = 'light' | 'dark'
 
 export const cookieName = 'co.jean-marc.theme'
 
+/**
+ * @description Retrieves the users theme preference from the current request's
+ * cookie header.
+ */
 export function getTheme(request: Request): Theme | null {
   const cookieHeader = request.headers.get('cookie')
   const parsed = cookieHeader ? cookie.parse(cookieHeader)[cookieName] : 'light'
@@ -13,7 +17,11 @@ export function getTheme(request: Request): Theme | null {
   return null
 }
 
-export function setTheme(theme: Theme | 'system') {
+/**
+ * @description Generates a set cookie header string based of the user's theme
+ * preference.
+ */
+export function setTheme(theme: Theme | 'system'): string {
   if (theme === 'system')
     return cookie.serialize(cookieName, '', { path: '/', maxAge: -1 })
 

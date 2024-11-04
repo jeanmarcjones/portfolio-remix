@@ -6,21 +6,24 @@ Status: accepted
 
 ## Context
 
-To simplify the app and advance development, I plan to remove the database. This will allow me to streamline
-development, deployment, and maintenance while reducing running costs.
+I'm removing the database to simplify the app and advance development. Doing so will allow for easier development,
+deployment, and maintenance while reducing running costs.
 
 Markdown is a lightweight markup language used to format plain text documents. It's well-suited for storing an app's
-static content on a file system. To meet database-like needs, you can use frontmatter to add metadata to the files.
+static content on a file system. I can use Frontmatter to add metadata to the files to meet my database-like needs.
+
+Finally, I need to decide how to validate the posts' frontmatter. Zod is a TypeScript-first schema declaration and
+validation library. With this, we can achieve the same level of type safety as provided by Prisma's ORM.
 
 ## Decision
 
-I will replace the SQLite database with MDX files combined with frontmatter. This solution provides all the
-functionality I need for my use case.
+I will replace the SQLite database with MDX files combined with Frontmatter. Zod will handle validating the Frontmatter
+with a predefined schema. This solution provides all the functionality I need for my use case.
 
 ## Consequences
 
-Redeployment will be necessary if site content changes are required. Fortunately, for my use case frequent updates are
-uncommon, so this isn't a significant concern.
+Redeployment will be necessary if the site's content changes are required. However, this isn't a significant concern due
+to infrequent updates.
 
-If new features requirements demand a proper database, I'll need to reintroduce SQLite. Fortunately, I've maintained
-a branch with the current implementation, making this transition trivial.
+If new feature requirements demand a proper database, reintroducing SQLite will be trivial. I've retained a branch with
+the current implementation to aid the process.

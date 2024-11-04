@@ -1,14 +1,10 @@
-/// <reference types="vitest/config" />
-
-import path from 'node:path'
-
 import mdx from '@mdx-js/rollup'
 import { vitePlugin as remix } from '@remix-run/dev'
 import { rehypePrettyCode } from 'rehype-pretty-code'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { flatRoutes } from 'remix-flat-routes'
-import { defineConfig } from 'vite'
+import { defineConfig, type PluginOption } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
@@ -17,7 +13,7 @@ export default defineConfig({
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
       rehypePlugins: [rehypePrettyCode],
-    }),
+    }) as PluginOption,
     process.env.NODE_ENV === 'test'
       ? null
       : remix({
@@ -43,17 +39,4 @@ export default defineConfig({
           },
         }),
   ],
-  test: {
-    include: ['./app/**/*.test.{ts,tsx}'],
-    restoreMocks: true,
-    setupFiles: ['./test/vitest-setup.ts'],
-    coverage: {
-      include: ['app/**/*.{ts,tsx}'],
-      exclude: ['**/types/**/*', '**/*.test.{ts,tsx}', 'app/*.tsx'],
-      all: true,
-    },
-    alias: {
-      'virtual:remix/server-build': path.resolve('./build/server/index.js'),
-    },
-  },
 })

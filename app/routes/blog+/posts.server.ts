@@ -15,6 +15,12 @@ export type Frontmatter = z.infer<typeof FrontmatterSchema>
 
 export type PostMeta = z.infer<typeof PostMetaSchema>
 
+/**
+ * @description Uses Vite's glob imports, to retrieve a list of all the post
+ * metadata along with their slug. Vite handles transforming the MDX routes with
+ * the same transformation pipeline as the vite config allowing access to the
+ * frontmatter.
+ */
 export const getPosts = async (): Promise<PostMeta[]> => {
   const modules = import.meta.glob<{
     frontmatter: Frontmatter
